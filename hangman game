@@ -9,7 +9,6 @@ k = []
 count = 8
 user = input('Type "play" to play the game, "exit" to quit:')
 while count:
-    #count = 8
     if user == 'exit':
         break
     if user == 'play': 
