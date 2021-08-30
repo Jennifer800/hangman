@@ -1,0 +1,49 @@
+import random
+words = ["python", "java", "kotlin", "javascript"]
+computer = random.choice(words)
+x = computer[0:]
+y = x.replace(x, "-" * len(computer))
+print("H A N G M A N\n")
+m = list(y)
+k = []
+count = 8
+user = input('Type "play" to play the game, "exit" to quit:')
+while count:
+    #count = 8
+    if user == 'exit':
+        break
+    if user == 'play': 
+        print()
+        print(y, sep="")
+        guess = input("Input a letter:")
+
+        if len(guess) > 1:
+            print("You should input a single letter")
+            continue
+        if guess in k:
+            print("You've already guessed this letter")
+            continue
+        k.append(guess)
+        if not guess.islower()or not guess.isalpha():
+            print("Please enter a lowercase English letter")
+            continue        
+        if guess not in computer:
+            count -= 1
+            print("That letter doesn't appear in the word")
+        if count <= 0:
+            print("You lost!")
+            print()
+            user = input('Type "play" to play the game, "exit" to quit:')
+        if guess in computer:
+            for i in range(len(computer)):
+                if guess == computer[i]:
+                    m[i] = guess
+                    y =''.join(m)           
+            if y in computer and count >= 0:
+                print("You guessed the word" + " " + computer + "!")
+                print("You survived!")
+                print()
+                user = input('Type "play" to play the game, "exit" to quit:')
+    else:
+        user = input('Type "play" to play the game, "exit" to quit:')
+        
